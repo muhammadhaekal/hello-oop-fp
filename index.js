@@ -12,12 +12,21 @@ class Orang {
 class Guru extends Orang {
   constructor(nama, gender, gelar){
     super(nama,gender)
-    this.gelar = gelar
+    this.gelar = []
   }
 
   tambahGelar(gelarBaru){
-    this.gelar = this.gelar + " ," + gelarBaru
+    this.gelar.push(gelarBaru )
   }
+
+  tampilkanNamaGelar(){
+    var text = this.nama
+    this.gelar.map((gelar) => {
+      text += ` ,${gelar}`
+    })
+    return text
+  }
+
 }
 
 class Dosen extends Guru{
@@ -36,6 +45,7 @@ kepalaSekolah.tambahGelar("M.Kom")
 kepalaSekolah.tambahGelar("prof")
 const rektor = new Dosen("joni","Male","s.kom","mtk")
 
-console.log(rektor.mataKuliah);
+console.log(kepalaSekolah.gelar);
+console.log(kepalaSekolah.tampilkanNamaGelar());
 // console.log(kepalaSekolah.gelar);
 // console.log(`${kepalaSekolah.nama} ${kepalaSekolah.gelar} `);
